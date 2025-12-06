@@ -14,7 +14,6 @@ export default function Home() {
           disablePictureInPicture
           controlsList="nofullscreen noremoteplayback nodownload noplaybackrate"
           tabIndex={-1}
-          onContextMenu={(e) => e.preventDefault()}
         />
         <div className="content">
           <div className="brand">
