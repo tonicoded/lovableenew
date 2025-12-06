@@ -20,9 +20,9 @@ body {
   font-family: var(--font-manrope), "Space Grotesk", system-ui, -apple-system, "Segoe UI",
     sans-serif;
   color: var(--text);
-  background: radial-gradient(circle at 15% 15%, rgba(246, 166, 90, 0.18), transparent 28%),
-    radial-gradient(circle at 80% 30%, rgba(111, 215, 213, 0.18), transparent 30%),
-    linear-gradient(180deg, #05040a, #0d0c12 60%, #0a080e);
+  background: radial-gradient(circle at 15% 15%, rgba(246, 166, 90, 0.22), transparent 28%),
+    radial-gradient(circle at 80% 30%, rgba(111, 215, 213, 0.2), transparent 32%),
+    linear-gradient(180deg, #040308, #0a0a12 55%, #05040a);
   overflow: hidden;
 }
 
@@ -48,8 +48,9 @@ a {
   width: min(90vw, calc(94vh * 9 / 16));
   border-radius: 26px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 32px 88px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 48px 110px rgba(0, 0, 0, 0.58), 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 0 40px rgba(111, 215, 213, 0.15);
   background: #08060a;
 }
 
@@ -207,6 +208,35 @@ h1 {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.hero-badges {
+  display: inline-flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 12px 20px rgba(0, 0, 0, 0.25);
+}
+
+.badge.ghost {
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.14);
 }
 
 .pill-dot {

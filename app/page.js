@@ -2,7 +2,15 @@ export default function Home() {
   return (
     <section className="stage">
       <div className="frame">
-        <video src="/assets/video.mp4" autoPlay muted loop playsInline />
+        <video
+          src="/assets/video.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          aria-hidden="true"
+          draggable="false"
+        />
         <div className="content">
           <div className="brand">
             <img src="/assets/paywall.gif" alt="lovablee logo" />
@@ -12,6 +20,10 @@ export default function Home() {
             shared pet rituals
             <span className="pill-dot" />
             live doodles
+          </div>
+          <div className="hero-badges">
+            <span className="badge">live preview</span>
+            <span className="badge ghost">cozy · playful · personal</span>
           </div>
           <h1>One calm place for your shared pet.</h1>
           <p className="lede">
