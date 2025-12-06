@@ -62,6 +62,7 @@ a {
   object-fit: cover;
   opacity: 0.78;
   filter: brightness(0.82) saturate(1.02);
+  pointer-events: none;
 }
 
 .frame::after {
