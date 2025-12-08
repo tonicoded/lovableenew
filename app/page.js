@@ -34,7 +34,11 @@ export default function Home() {
             Minimal, focused, and synced so you both feel close to your pet, wherever you are.
           </p>
           <div className="cta-row">
-            <a className="store-badge" href="#" aria-label="Download on the App Store">
+            <a
+              className="store-badge"
+              href="https://apps.apple.com/us/app/lovablee-doodles-love-notes/id6756137497"
+              aria-label="Download on the App Store"
+            >
               <img src="/assets/appstore.svg" alt="Download on the App Store" />
             </a>
             <a className="store-badge" href="#" aria-label="Get it on Google Play">
