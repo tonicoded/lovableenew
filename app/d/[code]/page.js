@@ -4,6 +4,12 @@ const SUPABASE_URL = 'https://ahtkqcaxeycxvwntjcxp.supabase.co';
 // Keep this in sync with the mobile app anon key; the previous value was rotated.
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFodGtxY2F4ZXljeHZ3bnRqY3hwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ1MDI3MDQsImV4cCI6MjA4MDA3ODcwNH0.cyIkcEN6wd71cis85jAOCMHrx8RoHbuMuUOvi_b10SI';
 
+const buildHeaders = () => ({
+  'Content-Type': 'application/json',
+  'apikey': SUPABASE_ANON_KEY,
+  'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+});
+
 const normalizeImage = (doodle) => {
   const url = doodle?.doodle_image_url?.trim();
   const data = doodle?.doodle_image_data?.trim();
@@ -14,17 +20,46 @@ const normalizeImage = (doodle) => {
   return '';
 };
 
-async function getDoodle(code) {
+async function getDoodle(code, { increment = true } = {}) {
+  if (!increment) {
+    try {
+      const now = new Date().toISOString();
+      const query = new URLSearchParams({
+        select: 'short_code,doodle_image_url,doodle_image_data,view_count,created_at,expires_at',
+        or: `(expires_at.is.null,expires_at.gt.${now})`,
+      }).toString();
+
+      const response = await fetch(
+        `${SUPABASE_URL}/rest/v1/shared_doodles?short_code=eq.${code}&${query}`,
+        {
+          method: 'GET',
+          headers: {
+            ...buildHeaders(),
+            Prefer: 'count=none',
+          },
+          cache: 'no-store',
+        }
+      );
+
+      if (!response.ok) {
+        return null;
+      }
+
+      const data = await response.json();
+      return data?.[0] ?? null;
+    } catch (error) {
+      console.error('Error fetching doodle (readonly):', error);
+      return null;
+    }
+  }
+
   try {
     const response = await fetch(
       `${SUPABASE_URL}/rest/v1/rpc/get_shared_doodle`,
       {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'apikey': SUPABASE_ANON_KEY,
-          // Supabase REST needs the JWT in Authorization as well to satisfy RLS.
-          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+          ...buildHeaders(),
         },
         body: JSON.stringify({ p_short_code: code }),
         cache: 'no-store',
@@ -45,7 +80,7 @@ async function getDoodle(code) {
 
 export async function generateMetadata({ params }) {
   const { code } = await params;
-  const doodle = await getDoodle(code);
+  const doodle = await getDoodle(code, { increment: false });
 
   if (!doodle) {
     return {
@@ -189,6 +224,19 @@ export default async function SharedDoodlePage({ params }) {
               color: '#6c757d',
               margin: 0
             }}>download lovablee to send doodles to your partner, care for a shared pet, and stay close every day.</p>
+            <a
+              href="https://lovablee.com"
+              style={{
+                display: 'inline-block',
+                marginTop: '14px',
+                fontSize: '15px',
+                fontWeight: 600,
+                color: '#764ba2',
+                textDecoration: 'none',
+              }}
+            >
+              ← back to lovablee.com
+            </a>
           </div>
 
           <div style={{
