@@ -14,7 +14,7 @@ async function getDoodle(code) {
           'apikey': SUPABASE_ANON_KEY,
         },
         body: JSON.stringify({ p_short_code: code }),
-        cache: 'no-store', // Always fetch fresh data
+        cache: 'no-store',
       }
     );
 
@@ -87,238 +87,154 @@ export default async function SharedDoodlePage({ params }) {
   });
 
   return (
-    <div className="doodle-page">
-      <div className="doodle-container">
-        <div className="doodle-header">
-          <div className="brand">
-            <img src="/assets/paywall.gif" alt="lovablee" width="40" height="40" />
+    <div style={{
+      minHeight: '100vh',
+      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+      padding: '20px',
+      fontFamily: 'var(--font-manrope), system-ui, sans-serif'
+    }}>
+      <div style={{
+        maxWidth: '600px',
+        margin: '0 auto',
+        padding: '40px 0'
+      }}>
+        <div style={{ marginBottom: '30px' }}>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '12px',
+            color: 'white',
+            fontSize: '24px',
+            fontWeight: 700,
+            fontFamily: 'var(--font-space), sans-serif'
+          }}>
+            <img src="/assets/paywall.gif" alt="lovablee" width="40" height="40" style={{
+              borderRadius: '12px',
+              filter: 'drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2))'
+            }} />
             <span>lovablee</span>
           </div>
         </div>
 
-        <div className="doodle-card">
-          <div className="doodle-image-wrapper">
+        <div style={{
+          background: 'white',
+          borderRadius: '24px',
+          padding: '32px',
+          boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)'
+        }}>
+          <div style={{
+            width: '100%',
+            aspectRatio: '1',
+            background: '#f8f9fa',
+            borderRadius: '16px',
+            overflow: 'hidden',
+            marginBottom: '20px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            border: '2px solid #e9ecef'
+          }}>
             <img
               src={imageUrl}
               alt="Shared doodle"
-              className="doodle-image"
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'contain'
+              }}
             />
           </div>
 
-          <div className="doodle-meta">
-            <p className="doodle-date">Drawn on {createdDate}</p>
-            <p className="doodle-views">👀 {doodle.view_count.toLocaleString()} views</p>
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            padding: '16px 0',
+            borderBottom: '1px solid #e9ecef',
+            marginBottom: '24px',
+            fontSize: '14px',
+            color: '#6c757d'
+          }}>
+            <p style={{ margin: 0 }}>Drawn on {createdDate}</p>
+            <p style={{ margin: 0, fontWeight: 600 }}>👀 {doodle.view_count.toLocaleString()} views</p>
           </div>
 
-          <div className="doodle-message">
-            <h1>someone sent you a doodle! 🎨</h1>
-            <p>download lovablee to send doodles to your partner, care for a shared pet, and stay close every day.</p>
+          <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+            <h1 style={{
+              fontSize: '28px',
+              fontWeight: 700,
+              margin: '0 0 12px 0',
+              color: '#212529',
+              fontFamily: 'var(--font-space), sans-serif'
+            }}>someone sent you a doodle! 🎨</h1>
+            <p style={{
+              fontSize: '16px',
+              lineHeight: '1.6',
+              color: '#6c757d',
+              margin: 0
+            }}>download lovablee to send doodles to your partner, care for a shared pet, and stay close every day.</p>
           </div>
 
-          <div className="cta-buttons">
+          <div style={{
+            display: 'flex',
+            gap: '12px',
+            justifyContent: 'center',
+            flexWrap: 'wrap',
+            marginBottom: '12px'
+          }}>
             <a
-              className="app-store-btn"
               href="https://apps.apple.com/us/app/lovablee-doodles-love-notes/id6756137497"
               aria-label="Download on the App Store"
+              style={{
+                transition: 'transform 0.2s, opacity 0.2s',
+                display: 'inline-block'
+              }}
             >
-              <img src="/assets/appstore.svg" alt="Download on the App Store" />
+              <img src="/assets/appstore.svg" alt="Download on the App Store" style={{ height: '48px', width: 'auto' }} />
             </a>
-            <a className="app-store-btn disabled" href="#" aria-label="Get it on Google Play">
-              <img src="/assets/googleplay.svg" alt="Get it on Google Play" />
+            <a href="#" aria-label="Get it on Google Play" style={{
+              opacity: 0.5,
+              cursor: 'not-allowed',
+              transition: 'transform 0.2s, opacity 0.2s',
+              display: 'inline-block'
+            }}>
+              <img src="/assets/googleplay.svg" alt="Get it on Google Play" style={{ height: '48px', width: 'auto' }} />
             </a>
           </div>
 
-          <p className="android-note">Android coming soon</p>
+          <p style={{
+            textAlign: 'center',
+            fontSize: '13px',
+            color: '#adb5bd',
+            margin: 0
+          }}>Android coming soon</p>
         </div>
 
-        <footer className="doodle-footer">
-          <a href="/">← back to lovablee.com</a>
-          <div className="footer-links-small">
-            <a href="/privacy.html">privacy</a>
+        <footer style={{
+          marginTop: '40px',
+          textAlign: 'center',
+          color: 'white'
+        }}>
+          <a href="/" style={{
+            color: 'white',
+            textDecoration: 'none',
+            opacity: 0.9
+          }}>← back to lovablee.com</a>
+          <div style={{
+            marginTop: '12px',
+            fontSize: '14px',
+            opacity: 0.8,
+            display: 'flex',
+            gap: '8px',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}>
+            <a href="/privacy.html" style={{ color: 'white', textDecoration: 'none' }}>privacy</a>
             <span>·</span>
-            <a href="/terms.html">terms</a>
+            <a href="/terms.html" style={{ color: 'white', textDecoration: 'none' }}>terms</a>
           </div>
         </footer>
       </div>
-
-      <style jsx>{`
-        .doodle-page {
-          min-height: 100vh;
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          padding: 20px;
-          font-family: var(--font-manrope), system-ui, sans-serif;
-        }
-
-        .doodle-container {
-          max-width: 600px;
-          margin: 0 auto;
-          padding: 40px 0;
-        }
-
-        .doodle-header {
-          margin-bottom: 30px;
-        }
-
-        .brand {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          color: white;
-          font-size: 24px;
-          font-weight: 700;
-          font-family: var(--font-space), sans-serif;
-        }
-
-        .brand img {
-          border-radius: 12px;
-          filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
-        }
-
-        .doodle-card {
-          background: white;
-          border-radius: 24px;
-          padding: 32px;
-          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-
-        .doodle-image-wrapper {
-          width: 100%;
-          aspect-ratio: 1;
-          background: #f8f9fa;
-          border-radius: 16px;
-          overflow: hidden;
-          margin-bottom: 20px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border: 2px solid #e9ecef;
-        }
-
-        .doodle-image {
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
-        }
-
-        .doodle-meta {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 16px 0;
-          border-bottom: 1px solid #e9ecef;
-          margin-bottom: 24px;
-          font-size: 14px;
-          color: #6c757d;
-        }
-
-        .doodle-date {
-          margin: 0;
-        }
-
-        .doodle-views {
-          margin: 0;
-          font-weight: 600;
-        }
-
-        .doodle-message {
-          text-align: center;
-          margin-bottom: 32px;
-        }
-
-        .doodle-message h1 {
-          font-size: 28px;
-          font-weight: 700;
-          margin: 0 0 12px 0;
-          color: #212529;
-          font-family: var(--font-space), sans-serif;
-        }
-
-        .doodle-message p {
-          font-size: 16px;
-          line-height: 1.6;
-          color: #6c757d;
-          margin: 0;
-        }
-
-        .cta-buttons {
-          display: flex;
-          gap: 12px;
-          justify-content: center;
-          flex-wrap: wrap;
-          margin-bottom: 12px;
-        }
-
-        .app-store-btn {
-          transition: transform 0.2s, opacity 0.2s;
-        }
-
-        .app-store-btn:hover:not(.disabled) {
-          transform: scale(1.05);
-        }
-
-        .app-store-btn.disabled {
-          opacity: 0.5;
-          cursor: not-allowed;
-        }
-
-        .app-store-btn img {
-          height: 48px;
-          width: auto;
-        }
-
-        .android-note {
-          text-align: center;
-          font-size: 13px;
-          color: #adb5bd;
-          margin: 0;
-        }
-
-        .doodle-footer {
-          margin-top: 40px;
-          text-align: center;
-          color: white;
-        }
-
-        .doodle-footer a {
-          color: white;
-          text-decoration: none;
-          opacity: 0.9;
-          transition: opacity 0.2s;
-        }
-
-        .doodle-footer a:hover {
-          opacity: 1;
-          text-decoration: underline;
-        }
-
-        .footer-links-small {
-          margin-top: 12px;
-          font-size: 14px;
-          opacity: 0.8;
-          display: flex;
-          gap: 8px;
-          justify-content: center;
-          align-items: center;
-        }
-
-        @media (max-width: 640px) {
-          .doodle-card {
-            padding: 24px;
-          }
-
-          .doodle-message h1 {
-            font-size: 24px;
-          }
-
-          .doodle-message p {
-            font-size: 15px;
-          }
-
-          .app-store-btn img {
-            height: 44px;
-          }
-        }
-      `}</style>
     </div>
   );
 }
