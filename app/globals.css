@@ -23,7 +23,8 @@ body {
   background: radial-gradient(circle at 15% 15%, rgba(246, 166, 90, 0.22), transparent 28%),
     radial-gradient(circle at 80% 30%, rgba(111, 215, 213, 0.2), transparent 32%),
     linear-gradient(180deg, #040308, #0a0a12 55%, #05040a);
-  overflow: hidden;
+  overflow-y: auto;
+  min-height: 100vh;
 }
 
 a {

@@ -46,7 +46,11 @@ export async function generateMetadata({ params }) {
 
   const imageUrl = (doodle.doodle_image_url && doodle.doodle_image_url.trim().length > 0)
     ? doodle.doodle_image_url
-    : doodle.doodle_image_data; // already includes data URI prefix
+    : doodle.doodle_image_data?.startsWith('data:')
+      ? doodle.doodle_image_data
+      : doodle.doodle_image_data
+        ? `data:image/png;base64,${doodle.doodle_image_data}`
+        : '';
   const shareUrl = `https://lovablee.com/d/${code}`;
 
   return {
