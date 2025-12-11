@@ -1,0 +1,512 @@
+/* [project]/Downloads/lovableewebsite-main/lovableewebsite-main/app/globals.css [app-client] (css) */
+:root {
+  --text: #f9f6f1;
+  --muted: #ded8d0;
+  --accent: #f6a65a;
+  --accent-2: #6fd7d5;
+  --panel: #08060a61;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-manrope), "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at 15% 15%, #f6a65a2e, #0000 28%), radial-gradient(circle at 80% 30%, #6fd7d52e, #0000 30%), linear-gradient(#05040a, #0d0c12 60%, #0a080e);
+  overflow: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.stage {
+  isolation: isolate;
+  place-items: center;
+  width: 100%;
+  height: 100vh;
+  padding: clamp(14px, 3vw, 28px);
+  display: grid;
+  position: relative;
+}
+
+.frame {
+  aspect-ratio: 9 / 16;
+  background: #08060a;
+  border: 1px solid #ffffff2e;
+  border-radius: 26px;
+  width: min(90vw, 52.875vh);
+  height: min(94vh, 160vw);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 32px 88px #00000080, 0 0 0 1px #ffffff0d;
+}
+
+.frame video {
+  object-fit: cover;
+  opacity: .78;
+  filter: brightness(.82) saturate(1.02);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+}
+
+.frame:after {
+  content: "";
+  background: linear-gradient(#08060a47, #08060a99), radial-gradient(circle at 50% 40%, #08060a52, #0000 42%);
+  position: absolute;
+  inset: 0;
+}
+
+.frame:before {
+  content: "";
+  z-index: 0;
+  background: linear-gradient(160deg, #ffffff14, #ffffff05);
+  border-radius: 22px;
+  position: absolute;
+  inset: 10px;
+}
+
+.content {
+  z-index: 1;
+  text-align: center;
+  background: linear-gradient(#08060a33, #08060a59);
+  align-content: center;
+  justify-items: center;
+  gap: clamp(14px, 3vw, 20px);
+  height: 100%;
+  padding: clamp(18px, 5vw, 30px);
+  display: grid;
+  position: relative;
+}
+
+.brand {
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  display: inline-flex;
+}
+
+.brand img {
+  object-fit: cover;
+  border-radius: 14px;
+  width: 72px;
+  height: 72px;
+  box-shadow: 0 14px 36px #00000059;
+}
+
+.brand span {
+  font-family: var(--font-space), "Space Grotesk", "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  letter-spacing: .3px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+h1 {
+  letter-spacing: -.4px;
+  text-shadow: 0 6px 16px #00000059;
+  margin: 0;
+  font-size: clamp(28px, 4vw, 44px);
+}
+
+.lede {
+  color: var(--muted);
+  text-shadow: 0 4px 12px #0000002e;
+  margin: 0;
+  font-size: clamp(14px, 2vw, 17px);
+  line-height: 1.6;
+}
+
+.cta-row {
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  display: flex;
+}
+
+.store-badge {
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  display: inline-flex;
+}
+
+.store-badge img {
+  filter: drop-shadow(0 12px 24px #00000059);
+  width: auto;
+  height: 44px;
+  display: block;
+}
+
+.hint-text {
+  text-align: center;
+  width: 100%;
+  color: var(--muted);
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  opacity: .86;
+  margin-top: 4px;
+  font-size: 12px;
+}
+
+.btn {
+  border: 1px solid #0000;
+  border-radius: 12px;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  transition: transform .15s, box-shadow .18s, background .2s, border-color .2s;
+  display: inline-flex;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, var(--accent), #f48f5e);
+  color: #1b1109;
+  box-shadow: 0 16px 32px #f6a65a59, 0 0 0 1px #ffffff2e;
+}
+
+.btn.secondary {
+  color: var(--text);
+  background: #ffffff1f;
+  border-color: #fff3;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 36px #00000059;
+}
+
+.pill-row {
+  color: var(--muted);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  background: #ffffff14;
+  border: 1px solid #ffffff2e;
+  border-radius: 999px;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  font-size: 12px;
+  display: inline-flex;
+  box-shadow: inset 0 1px #ffffff14;
+}
+
+.pill-dot {
+  background: var(--accent);
+  border-radius: 50%;
+  width: 6px;
+  height: 6px;
+  display: inline-block;
+}
+
+footer {
+  z-index: 1;
+  position: absolute;
+  bottom: clamp(10px, 3vw, 16px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.footer-links {
+  color: var(--muted);
+  text-shadow: 0 6px 14px #00000059;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  display: flex;
+}
+
+.footer-links a {
+  border-bottom: 1px solid #0000;
+  padding-bottom: 2px;
+}
+
+.footer-links a:hover {
+  color: var(--text);
+  border-color: #ffffff4d;
+}
+
+@media (max-width: 540px) {
+  .content {
+    gap: 12px;
+    padding: 14px 16px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  .cta-row {
+    gap: 8px;
+  }
+}
+
+/* [next]/internal/font/google/space_grotesk_60b2a0f4.module.css [app-client] (css) */
+@font-face {
+  font-family: Space Grotesk;
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../media/32687112bd2dd8db-s.cfdd66c2.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: Space Grotesk;
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../media/28868e710e86be81-s.c30238d4.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: Space Grotesk;
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../media/0c89a48fa5027cee-s.p.4564287c.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: Space Grotesk;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../media/32687112bd2dd8db-s.cfdd66c2.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: Space Grotesk;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../media/28868e710e86be81-s.c30238d4.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: Space Grotesk;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../media/0c89a48fa5027cee-s.p.4564287c.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: Space Grotesk Fallback;
+  src: local(Arial);
+  ascent-override: 89.71%;
+  descent-override: 26.62%;
+  line-gap-override: 0.0%;
+  size-adjust: 109.69%;
+}
+
+.space_grotesk_60b2a0f4-module__56YXfq__className {
+  font-family: Space Grotesk, Space Grotesk Fallback;
+  font-style: normal;
+}
+
+.space_grotesk_60b2a0f4-module__56YXfq__variable {
+  --font-space: "Space Grotesk", "Space Grotesk Fallback";
+}
+
+/* [next]/internal/font/google/manrope_e678c5fa.module.css [app-client] (css) */
+@font-face {
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../media/a342834df7752944-s.bb140f9f.woff2") format("woff2");
+  unicode-range: U+460-52F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../media/d3fe2f289711ac3f-s.50575af1.woff2") format("woff2");
+  unicode-range: U+301, U+400-45F, U+490-491, U+4B0-4B1, U+2116;
+}
+
+@font-face {
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../media/58c4895d0a0ef7cc-s.78d1a7ae.woff2") format("woff2");
+  unicode-range: U+370-377, U+37A-37F, U+384-38A, U+38C, U+38E-3A1, U+3A3-3FF;
+}
+
+@font-face {
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../media/bfc7db5c00d21bc5-s.247c8473.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../media/6ab0db14f70d8ed6-s.18d7c7dc.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../media/a343f882a40d2cc9-s.p.71e1367e.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../media/a342834df7752944-s.bb140f9f.woff2") format("woff2");
+  unicode-range: U+460-52F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../media/d3fe2f289711ac3f-s.50575af1.woff2") format("woff2");
+  unicode-range: U+301, U+400-45F, U+490-491, U+4B0-4B1, U+2116;
+}
+
+@font-face {
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../media/58c4895d0a0ef7cc-s.78d1a7ae.woff2") format("woff2");
+  unicode-range: U+370-377, U+37A-37F, U+384-38A, U+38C, U+38E-3A1, U+3A3-3FF;
+}
+
+@font-face {
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../media/bfc7db5c00d21bc5-s.247c8473.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../media/6ab0db14f70d8ed6-s.18d7c7dc.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../media/a343f882a40d2cc9-s.p.71e1367e.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../media/a342834df7752944-s.bb140f9f.woff2") format("woff2");
+  unicode-range: U+460-52F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../media/d3fe2f289711ac3f-s.50575af1.woff2") format("woff2");
+  unicode-range: U+301, U+400-45F, U+490-491, U+4B0-4B1, U+2116;
+}
+
+@font-face {
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../media/58c4895d0a0ef7cc-s.78d1a7ae.woff2") format("woff2");
+  unicode-range: U+370-377, U+37A-37F, U+384-38A, U+38C, U+38E-3A1, U+3A3-3FF;
+}
+
+@font-face {
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../media/bfc7db5c00d21bc5-s.247c8473.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../media/6ab0db14f70d8ed6-s.18d7c7dc.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../media/a343f882a40d2cc9-s.p.71e1367e.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: Manrope Fallback;
+  src: local(Arial);
+  ascent-override: 103.31%;
+  descent-override: 29.07%;
+  line-gap-override: 0.0%;
+  size-adjust: 103.19%;
+}
+
+.manrope_e678c5fa-module__H_VapW__className {
+  font-family: Manrope, Manrope Fallback;
+  font-style: normal;
+}
+
+.manrope_e678c5fa-module__H_VapW__variable {
+  --font-manrope: "Manrope", "Manrope Fallback";
+}
+
+/*# sourceMappingURL=%5Broot-of-the-server%5D__402938e4._.css.map*/
