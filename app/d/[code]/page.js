@@ -1,7 +1,8 @@
 import { notFound } from 'next/navigation';
 
 const SUPABASE_URL = 'https://ahtkqcaxeycxvwntjcxp.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFodGtxY2F4ZXljeHZ3bnRqY3hwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzI2MzIxMjIsImV4cCI6MjA0ODIwODEyMn0.kpU9tYc85KWw9xA83HlqFO7HfENCH3LLtUjZvkXKUXI';
+// Keep this in sync with the mobile app anon key; the previous value was rotated.
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFodGtxY2F4ZXljeHZ3bnRqY3hwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ1MDI3MDQsImV4cCI6MjA4MDA3ODcwNH0.cyIkcEN6wd71cis85jAOCMHrx8RoHbuMuUOvi_b10SI';
 
 async function getDoodle(code) {
   try {
@@ -12,6 +13,8 @@ async function getDoodle(code) {
         headers: {
           'Content-Type': 'application/json',
           'apikey': SUPABASE_ANON_KEY,
+          // Supabase REST needs the JWT in Authorization as well to satisfy RLS.
+          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
         },
         body: JSON.stringify({ p_short_code: code }),
         cache: 'no-store',
