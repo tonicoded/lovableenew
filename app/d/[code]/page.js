@@ -4,6 +4,16 @@ const SUPABASE_URL = 'https://ahtkqcaxeycxvwntjcxp.supabase.co';
 // Keep this in sync with the mobile app anon key; the previous value was rotated.
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFodGtxY2F4ZXljeHZ3bnRqY3hwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ1MDI3MDQsImV4cCI6MjA4MDA3ODcwNH0.cyIkcEN6wd71cis85jAOCMHrx8RoHbuMuUOvi_b10SI';
 
+const normalizeImage = (doodle) => {
+  const url = doodle?.doodle_image_url?.trim();
+  const data = doodle?.doodle_image_data?.trim();
+
+  if (url) return url;
+  if (data?.startsWith('data:')) return data;
+  if (data) return `data:image/png;base64,${data}`;
+  return '';
+};
+
 async function getDoodle(code) {
   try {
     const response = await fetch(
@@ -44,13 +54,7 @@ export async function generateMetadata({ params }) {
     };
   }
 
-  const imageUrl = (doodle.doodle_image_url && doodle.doodle_image_url.trim().length > 0)
-    ? doodle.doodle_image_url
-    : doodle.doodle_image_data?.startsWith('data:')
-      ? doodle.doodle_image_data
-      : doodle.doodle_image_data
-        ? `data:image/png;base64,${doodle.doodle_image_data}`
-        : '';
+  const imageUrl = normalizeImage(doodle);
   const shareUrl = `https://lovablee.com/d/${code}`;
 
   return {
@@ -88,7 +92,7 @@ export default async function SharedDoodlePage({ params }) {
     notFound();
   }
 
-  const imageUrl = doodle.doodle_image_url || `data:image/png;base64,${doodle.doodle_image_data}`;
+  const imageUrl = normalizeImage(doodle);
   const createdDate = new Date(doodle.created_at).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
