@@ -44,7 +44,9 @@ export async function generateMetadata({ params }) {
     };
   }
 
-  const imageUrl = doodle.doodle_image_url || `data:image/png;base64,${doodle.doodle_image_data}`;
+  const imageUrl = (doodle.doodle_image_url && doodle.doodle_image_url.trim().length > 0)
+    ? doodle.doodle_image_url
+    : doodle.doodle_image_data; // already includes data URI prefix
   const shareUrl = `https://lovablee.com/d/${code}`;
 
   return {
@@ -94,7 +96,10 @@ export default async function SharedDoodlePage({ params }) {
       minHeight: '100vh',
       background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
       padding: '20px',
-      fontFamily: 'var(--font-manrope), system-ui, sans-serif'
+      fontFamily: 'var(--font-manrope), system-ui, sans-serif',
+      overflowY: 'auto',
+      WebkitOverflowScrolling: 'touch',
+      paddingBottom: '140px',
     }}>
       <div style={{
         maxWidth: '600px',
