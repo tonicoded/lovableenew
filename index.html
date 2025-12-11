@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lovablee - your shared pet space</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --text: #f7f4ef;
+            --muted: #dcd6cc;
+            --accent: #f6a65a;
+            --accent-2: #6fd7d5;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            height: 100%;
+        }
+
+        body {
+            font-family: "Manrope", "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+            color: var(--text);
+            background: radial-gradient(circle at 20% 20%, rgba(246, 166, 90, 0.15), transparent 30%),
+                        radial-gradient(circle at 80% 25%, rgba(111, 215, 213, 0.14), transparent 28%),
+                        #0c0a0f;
+            overflow: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .stage {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: clamp(14px, 3vw, 28px);
+            isolation: isolate;
+        }
+
+        .frame {
+            position: relative;
+            aspect-ratio: 9 / 16;
+            height: min(94vh, calc(90vw * 16 / 9));
+            width: min(90vw, calc(94vh * 9 / 16));
+            border-radius: 26px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 32px 88px rgba(0, 0, 0, 0.48);
+            background: #08060a;
+        }
+
+        .frame video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.88) saturate(1.05);
+        }
+
+        .frame::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(8, 6, 10, 0.22), rgba(8, 6, 10, 0.48));
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            height: 100%;
+            display: grid;
+            align-content: center;
+            justify-items: center;
+            gap: clamp(14px, 3vw, 20px);
+            padding: clamp(18px, 5vw, 30px);
+            text-align: center;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .brand img {
+            width: 72px;
+            height: 72px;
+            object-fit: cover;
+            border-radius: 14px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .brand span {
+            font-family: "Space Grotesk", "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            font-size: 22px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(28px, 4vw, 44px);
+            letter-spacing: -0.4px;
+        }
+
+        .lede {
+            margin: 0;
+            color: var(--muted);
+            font-size: clamp(14px, 2vw, 17px);
+            line-height: 1.6;
+        }
+
+        .cta-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-weight: 700;
+            border: 1px solid transparent;
+            transition: transform 150ms ease, box-shadow 180ms ease, background 200ms ease, border-color 200ms ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .btn.primary {
+            background: linear-gradient(135deg, var(--accent), #f48f5e);
+            color: #1b1109;
+            box-shadow: 0 16px 32px rgba(246, 166, 90, 0.35);
+        }
+
+        .btn.secondary {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text);
+            border-color: rgba(255, 255, 255, 0.18);
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 18px 36px rgba(0, 0, 0, 0.35);
+        }
+
+        .pill-row {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 999px;
+            padding: 8px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            color: var(--muted);
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        footer {
+            position: absolute;
+            bottom: clamp(10px, 3vw, 16px);
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+            font-size: 12px;
+            color: var(--muted);
+            justify-content: center;
+        }
+
+        .footer-links a {
+            border-bottom: 1px solid transparent;
+            padding-bottom: 2px;
+        }
+
+        .footer-links a:hover {
+            color: var(--text);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        @media (max-width: 540px) {
+            .content {
+                padding: 14px 16px;
+                gap: 12px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .cta-row {
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="stage">
+        <div class="frame">
+            <video src="assets/video.mp4" autoplay muted loop playsinline></video>
+            <div class="content">
+                <div class="brand">
+                    <img src="assets/paywall.gif" alt="lovablee logo">
+                    <span>lovablee</span>
+                </div>
+                <div class="pill-row">
+                    shared pet rituals
+                    <span style="width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block;"></span>
+                    live doodles
+                </div>
+                <h1>One calm place for your shared pet.</h1>
+                <p class="lede">Minimal, focused, and synced so you both feel close to your pet, wherever you are.</p>
+                <div class="cta-row">
+                    <a class="btn primary" href="#">download for ios</a>
+                    <a class="btn secondary" href="#">android waitlist</a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-links">
+                <a href="privacy.html">privacy</a>
+                <a href="terms.html">terms</a>
+                <a href="support.html">support</a>
+                <span>&copy; lovablee 2025</span>
+            </div>
+        </footer>
+    </section>
+</body>
+</html>
